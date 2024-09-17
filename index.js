@@ -81,9 +81,14 @@ app.use((req, res, next) => {
 });
 
 //routes of listings and reviews
-app.use("/listings", listingRouter);
-app.use("/listings/:id/reviews", reviewRouter)
+
 app.use("/", userRouter);
+
+app.use("/listings", listingRouter);
+
+app.use("/listings/:id/reviews", reviewRouter)
+
+
 
 app.all("*", (req, res, next) => {
     next(new ExpressError(404, "Page Not Found!"));
@@ -95,6 +100,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).render("error.ejs", { message });
 });
 
-app.listen(8080, () => {
-    console.log("server is listening to port 8080");
+app.listen(3000, () => {
+    console.log("server is listening to port 3000");
 }); 
